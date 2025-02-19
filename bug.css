@@ -1,0 +1,15 @@
+The following CSS code snippet demonstrates an unusual issue where the `::before` pseudo-element's content is unexpectedly affected by a parent element's `text-transform` property.
+
+```css
+div {
+  text-transform: uppercase;
+}
+
+div::before {
+  content: 'This is a test';
+}
+```
+
+The expected behavior is for the `::before` pseudo-element's content to remain as 'This is a test'. However, due to inheritance, the parent element's `text-transform: uppercase;` property will affect the pseudo-element's content, converting it to 'THIS IS A TEST'.
+
+This is subtle and unexpected because pseudo-elements are typically thought of as separate from their parent element.
