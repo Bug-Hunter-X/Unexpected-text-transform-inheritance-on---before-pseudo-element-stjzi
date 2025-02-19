@@ -1,0 +1,29 @@
+To solve this issue, prevent the inheritance by explicitly setting `text-transform: none` on the pseudo-element: 
+
+```css
+div {
+  text-transform: uppercase;
+}
+
+div::before {
+  content: 'This is a test';
+  text-transform: none; /* Solution */
+}
+```
+
+Alternatively, if you have more complex selectors, you might need to create a more specific class and apply the text-transform there. For instance:
+
+```css
+.container {
+  text-transform: uppercase;
+}
+
+.container::before {
+  content: 'This is a test';
+}
+
+.container .pseudo-element {
+  text-transform: none; /* Solution */
+}
+```
+This ensures that the `text-transform` rule for the parent element does not affect the content of the pseudo-element.
